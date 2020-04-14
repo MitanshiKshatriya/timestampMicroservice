@@ -36,8 +36,10 @@ app.get("/api/timestamp",function(req,res){
 })
 
 app.get("/api/timestamp/:date_string",function(req,res){
-  var d=new Date(req.params.date_string)
-  console.log(d)
+  var x=req.params.date_string;
+  if( x.indexOf("-") == -1 ){x=Number(x)}
+  var d=new Date(x)
+  //console.log(d)
   if(d=="Invalid Date"){
     res.json({
       "error" : "Invalid Date"
